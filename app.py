@@ -24,7 +24,7 @@ required_files = [
     "genre_label_binarizer.pkl",
     "style_label_binarizer_诗.pkl",
     "style_label_binarizer_词.pkl",
-    "models/hierarchical_model.pth"
+    "hierarchical_model.pth"
 ]
 
 missing_files = [f for f in required_files if not os.path.exists(f)]
@@ -59,7 +59,7 @@ def load_models():
         model = HierarchicalClassifier(
             input_size, hidden_size, genre_output_size, style_output_sizes
         )
-        model.load_state_dict(torch.load("models/hierarchical_model.pth", map_location=device))
+        model.load_state_dict(torch.load("hierarchical_model.pth", map_location=device))
         model.to(device)
         model.eval()
         
